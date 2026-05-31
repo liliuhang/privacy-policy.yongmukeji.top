@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昆象云科技隐私政策</title>
+    <link rel="icon" href="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/fe1565ec-02bf-4b26-800f-b6b659adee28" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            padding: 15px;
+            max-width: 100%;
+            word-wrap: break-word;
+            padding-bottom: 120px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin: 30px 0 20px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        h2 {
+            margin: 30px 0 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        p {
+            margin: 12px 0;
+            text-align: justify;
+        }
+        ol, ul {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        td {
+            padding: 8px;
+            vertical-align: top;
+            border: 1px solid #333;
+        }
+        .indent {
+            padding-left: 20px;
+        }
+
+        .notice-box {
+            background-color: #2e7d32;
+            color: #ffffff;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .history-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background-color: #3a3a3c;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .history-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+        }
+        .history-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .history-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+                top: 10px;
+                left: 10px;
+            }
+            .history-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .history-item {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4caf50;
+        }
+        .history-item:first-child {
+            border-left-color: #ffc107;
+            background-color: #2d2d2d;
+        }
+        .history-date {
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .history-item:first-child .history-date {
+            color: #ffc107;
+        }
+        .history-content {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: #888;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1565c0;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 13px;
+            z-index: 999;
+        }
+        .footer-links {
+            margin-top: 8px;
+        }
+        .footer-links a {
+            color: #aaddff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .footer {
+                font-size: 11px;
+                padding: 12px 10px;
+            }
+            .footer-links a {
+                display: block;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="history-btn" onclick="openHistory()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+        </svg>
+        历史记录
+    </button>
+
+    <div class="container">
+        <h1>昆象云科技隐私政策</h1>
+
+        <div class="notice-box">
+            为方便统一管理，西山区永慕智创软件工作室（个体工商户）&lt;原永慕科技&gt;的用户同样适用本政策。
+        </div>
+
+        <p style="text-align: center; color: #aaa; margin: 10px 0;">第一版发布时间：2024年8月15日，更新时间：2026年5月31日，目前为第三版。</p>
+
+        <h2>首部及导言</h2>
+        <p>昆象云科技隐私政策（以下简称"本政策"）帮助您了解以下内容：</p>
+        <ol>
+            <li>我们如何收集和使用您的个人信息</li>
+            <li>我们如何对外提供您的个人信息</li>
+            <li>我们如何保护您的个人信息</li>
+            <li>您的权利</li>
+            <li>我们如何处理儿童的个人信息</li>
+            <li>本政策如何更新</li>
+            <li>其他</li>
+            <li>如何联系我们</li>
+        </ol>
+
+        <h2>一、我们如何收集和使用您的个人信息</h2>
+        <p>个人信息是指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。</p>
+        <p>在您使用/浏览永慕科技的相应网站、应用等过程中，我们可能会按照如下方式收集您在使用时主动提供或因为使用而产生的个人信息，用以向您提供服务及优化我们的服务：</p>
+        <p>当您使用/浏览永慕科技的相应网站、应用等时，为使我们的服务正常运行以保障您的正常使用，改进优化您的使用体验，我们可能会收集您的设备名称、设备型号等软硬件特征信息、操作系统和应用程序版本等信息，这类信息在收集前会在显著位置进行提示，我们不会在未经允许的情况下收集。</p>
+        <p>当您参与互动留言等活动时，您可能需要提供姓名、性别、手机号码等信息。此类信息属于个人敏感信息，我们会严格保护您的个人信息，您可以根据自身需要选择是否参与互动留言等活动。</p>
+
+        <h2>二、我们如何对外提供您的个人信息</h2>
+        <p>为了更全面地为您提供服务，我们会使用专业第三方服务单位提供的软件服务工具包（简称 SDK），包括在使用分享功能时所调用的分享 SDK（新浪微博、微信、QQ 等提供），在浏览网页时所调用的浏览服务SDK（腾讯提供）。这些 SDK 可能会收集、使用或存储您的个人信息。我们会尽到审慎义务，对所使用 SDK 的来源进行严格审查。对于第三方SDK 收集的信息，由第三方服务单位承担相应责任，详情请查阅第三方服务单位的服务条款及隐私政策。</p>
+        <p>根据相关法律法规及国家标准，在以下情形中，我们可能会共享或公开披露个人信息无需事先征得您的同意：</p>
+        <ol>
+            <li>与国家安全、国防安全直接相关的。</li>
+            <li>与公共安全、公共卫生、重大公共利益直接相关的。</li>
+            <li>与刑事侦查、起诉、审判和判决执行等直接相关的。</li>
+            <li>出于维护个人信息主体或其他个人的生命、财产等重大合法权益但又很难得到您本人同意的。</li>
+            <li>法律法规规定的其他情形。</li>
+        </ol>
+
+        <h2>三、我们如何保护您的个人信息</h2>
+        <p>我们会采取一切合理可行的措施，保护您的个人信息。我们会采取一切合理可行的措施，确保未收集无关的个人信息。</p>
+
+        <h2>四、您的权利</h2>
+        <p>按照中国相关的法律、法规、标准，我们保障您对自己的个人信息行使法定权利。</p>
+
+        <h2>五、我们如何处理儿童的个人信息</h2>
+        <p>我们非常重视对未成年人个人信息的保护。根据相关法律法规的规定，若您是未成年人，在使用/浏览永慕科技的相应网站、应用等服务前，应事先取得您的家长或法定监护人的书面同意。</p>
+        <p>我们不会收集包括未成年人在内的个人信息。尽管当地法律和习俗对儿童的定义不同，但我们将不满 14 周岁的任何人均视为儿童。</p>
+
+        <h2>六、本政策如何更新</h2>
+        <p>我们可能会适时对本政策进行修订。当本政策的条款发生变更时，我们会在网站、应用等的醒目位置展示变更后的《昆象云科技隐私政策》。</p>
+
+        <h2>七、其他</h2>
+        <p>《昆象云科技服务条款》中所规定的用户权利及信息安全保障措施等均适用于永慕科技用户。如《昆象云科技服务条款》与本政策存在不一致或矛盾之处，请以本政策为准。</p>
+        <p>本政策的版权由昆象云科技所有，并保留一切解释和修改权利。</p>
+
+        <h2>八、如何联系我们</h2>
+        <p>如果您对本政策的相关事宜有任何问题、意见或建议，请发送邮件至 YongmuTechnology@outlook.com 或通过<a href="https://yongmukeji.top" target="_blank">永慕智创软件工作室官网https://yongmukeji.top</a>与我们联系。</p>
+
+        <h2>九、昆象云科技规章制度访问指引</h2>
+        <p>为节省运营成本，方便用户访问、日常管理、内容调整，以增强运营效率，昆象云科技建设了昆象云科技规章制度访问指引网页。您可在此查看并访问昆象云科技所有现行规章制度！<a href="https://rule-portal.yongmukeji.top target="_blank">昆象云科技规章制度访问指引网页https://rule-portal.yongmukeji.top</a>。</p>
+
+        <p style="text-align:center; margin-top:40px; color:#888;">【正文完】</p>
+    </div>
+
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeHistory()">&times;</button>
+            <h2>📋 更新历史记录</h2>
+            
+            <div class="history-item">
+                <div class="history-date">📅 2026年5月31日（第三版）（最新）</div>
+                <div class="history-content">
+                    <strong>第三版更新：</strong><br>
+                    •①修改了服务主体信息，由"永慕智创软件工作室（永慕科技）"变更为"昆明昆象云科技有限责任公司"（简称"昆象云科技"）<br>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-date">📅 2025年7月5日（第二版）</div>
+                <div class="history-content">
+                    <strong>第二版更新：</strong><br>
+                    •①修改了服务主体信息，由"永慕科技"变更为"永慕智创软件工作室（永慕科技）"（简称"永慕科技"）<br>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-date">📅 2024年8月15日（第一版）</div>
+                <div class="history-content">
+                    <strong>政策首次发布</strong><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>© 2022-<span id="currentYear"></span> 昆明昆象云科技有限责任公司 版权所有</div>
+        <div class="footer-links">
+            <a href="https://kunxy.top" target="_blank">昆象云科技官网</a> ｜ 
+            <a href="https://rule-portal.yongmukeji.top" target="_blank">昆象云科技规章制度访问指引</a> ｜ 
+            <a href="https://yongmukeji.top" target="_blank">永慕智创软件工作室官网</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function openHistory() {
+            document.getElementById('historyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHistory() {
+            document.getElementById('historyModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeHistoryOnOutside(event) {
+            if (event.target.id === 'historyModal') {
+                closeHistory();
+            }
+        }
+
+        document.getElementById('historyModal').addEventListener('click', closeHistoryOnOutside);
+    </script>
+</body>
+</html>
